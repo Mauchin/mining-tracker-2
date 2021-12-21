@@ -9,15 +9,22 @@ import java.util.List;
 public class TrackingObject{
     public Counter counter;
     public ItemRenderer itemRenderer;
-    public ClientPlayerEntity player;
     public boolean enabled = true;
     public List<Integer> historyValue;
-    public TrackingObject(Counter counter, ItemRenderer itemRenderer, ClientPlayerEntity player){
+    public int ticksSinceLastUpdate = 0;
+    public TrackingObject(Counter counter){
         this.counter = counter;
-        this.itemRenderer = itemRenderer;
-        this.player = player;
+
     }
-    //TODO make this
-    public void tick(){};
-    public void render(){};
+    public void tick(ClientPlayerEntity player, ItemRenderer itemRenderer){
+        if (this.enabled){
+            this.counter.tick(player);
+            this.ticksSinceLastUpdate += 1;
+        }
+        if (this.enabled && this.ticksSinceLastUpdate >= 10){
+            //TODO finish this
+            this.ticksSinceLastUpdate = 0;
+        }
+    }
+    public void render(){}
 }
