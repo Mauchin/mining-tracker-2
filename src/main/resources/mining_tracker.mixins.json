@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "com.mauchin.mining_tracker.mixin.ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
